@@ -1,10 +1,10 @@
 
-```markdown
-# Symfony 7 Project
+
+### **Symfony 7 Project**
 
 Welcome to the Weather info Symfony 7 project! This repository contains the source code for our Symfony7 application.
 
-## Getting Started
+### **Getting Started**
 
 These instructions will help you set up the project on your local machine for development and testing purposes.
 
