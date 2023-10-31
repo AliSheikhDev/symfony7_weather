@@ -19,13 +19,13 @@ These instructions will help you set up the project on your local machine for de
 1. **Clone the repository:**
 
    ```bash
-   git clone [https://github.com/your-username/symfony7-project.git](https://github.com/AliSheikhDev/symfony7_weather.git)
-   cd symfony7_weather
+   git clone https://github.com/AliSheikhDev/symfony7_weather.git
    ```
 
 2. **Install dependencies:**
 
    ```bash
+   cd symfony7_weather
    composer install
    ```
 
