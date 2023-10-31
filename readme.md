@@ -28,8 +28,13 @@ These instructions will help you set up the project on your local machine for de
    cd symfony7_weather
    composer install
    ```
+3. **Configure .env file:**
 
-3. **Start the development server:**
+```bash
+add key for weather api in .env file WEATHER_API_KEY=
+```
+
+4. **Start the development server:**
 
    ```bash
    symfony server:start
