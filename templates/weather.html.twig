@@ -1,0 +1,65 @@
+{# templates/api/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1>Add your City and find weather</h1>	
+    <input type="text" id="city" name="city">
+    <button onclick="callApi()">Submit</button>
+
+    <table id="responseTable">
+        <!-- API response will be displayed here -->
+    </table>
+
+    <script>
+        function callApi() {
+            var inputValue = document.getElementById('city').value;
+			var inputData = {
+				data: inputValue
+			};
+            // Make AJAX call to the Symfony controller action.
+            fetch('/weather/conroller/get_weather', {
+                method: 'POST',
+                body: JSON.stringify(inputData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the API response and populate the table.
+                var table = document.getElementById('responseTable');
+                table.innerHTML = ''; // Clear previous data
+				var tamperature = data.data.main;
+				var row1 = table.insertRow(0);
+				var row2 = table.insertRow(0);
+				var row3 = table.insertRow(0);
+				var row4 = table.insertRow(0);
+				var row5 = table.insertRow(0);
+				var row6 = table.insertRow(0);
+				var cell1 = row1.insertCell(0);
+				var cell2 = row2.insertCell(0);
+				var cell3 = row3.insertCell(0);
+				var cell4 = row4.insertCell(0);
+				var cell5 = row5.insertCell(0);
+				var cell6 = row6.insertCell(0);
+				cell1.innerHTML = "<br/><b>Current Temperature:</b> " + parseFloat((tamperature.temp-273.5).toFixed(2)) + " degree Celsius";
+				cell2.innerHTML = "<br/><b>Feels Like:</b> " + parseFloat((tamperature.feels_like-273.5).toFixed(2)) + " degree Celsius";
+				cell3.innerHTML = "<br/><b>Highest Temperature:</b> " + parseFloat((tamperature.temp_max-273.5).toFixed(2)) + " degree Celsius";
+				cell4.innerHTML = "<br/><b>Lowest Temperature:</b> " + parseFloat((tamperature.temp_min-273.5).toFixed(2)) + " degree Celsius";
+				cell5.innerHTML = "<br/><b>Pressure:</b> " + tamperature.pressure;
+				cell6.innerHTML = "<br/><b>Humidity:</b> " + tamperature.humidity + "%";
+                    
+            })
+            .catch(error => console.error(error));
+        }
+    </script>
+
+
+
+
+
+
+    
+{% endblock %}
