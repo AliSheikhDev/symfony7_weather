@@ -31,7 +31,8 @@ These instructions will help you set up the project on your local machine for de
 3. **Configure .env file:**
 
 ```bash
-add key for weather api in .env file WEATHER_API_KEY=
+add key for weather api in .env file
+WEATHER_API_KEY=
 ```
 
 4. **Start the development server:**
